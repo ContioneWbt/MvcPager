@@ -18,7 +18,6 @@ namespace PagerCheck.Extentions
     }
     public class Pagination
     {
-     
         public int ItemCount { get; set; }
         public int PageIndex { get; set; }
         public int PageSize { get; set; }

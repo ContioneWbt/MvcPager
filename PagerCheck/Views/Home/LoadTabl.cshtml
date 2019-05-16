@@ -8,27 +8,30 @@
     <col width="200">
     <col>
 </colgroup>
-<tbody>
-    @if (Model.Source.Any())
-    {
+    <tbody>
+        @if (Model != null)
+        {
+            if (Model.Source.Any())
+            {
 
-        foreach (var item in Model.Source)
+                foreach (var item in Model.Source)
+                {
+                    <tr>
+                        <td>@(item.Name)</td>
+                        <td>@(item.Mz)</td>
+                        <td>@(item.CreateTime)</td>
+                        <td>@(item.GY) </td>
+                    </tr>
+                }
+            }
+        }
+        else
         {
             <tr>
-                <td>@(item.Name)</td>
-                <td>@(item.Mz)</td>
-                <td>@(item.CreateTime)</td>
-                <td>@(item.GY) </td>
+                <td colspan="4">暂无数据！</td>
             </tr>
         }
-    }
-    else
-    {
-        <tr>
-            <td colspan="4">暂无数据！</td>
-        </tr>
-    }
-</tbody>
+    </tbody>
 </table>
 
 <!--分页开始-->

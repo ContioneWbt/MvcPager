@@ -1,0 +1,38 @@
+﻿@using PagerCheck.Extentions
+@using PagerCheck.Models
+@model   PaginationEntity<Title> 
+<table class="layui-table" style="margin-top:-10px" id="Tabl1">
+    <colgroup>
+    <col width="150">
+    <col width="150">
+    <col width="200">
+    <col>
+</colgroup>
+<tbody>
+    @if (Model.Source.Any())
+    {
+
+        foreach (var item in Model.Source)
+        {
+            <tr>
+                <td>@(item.Name)</td>
+                <td>@(item.Mz)</td>
+                <td>@(item.CreateTime)</td>
+                <td>@(item.GY) </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="4">暂无数据！</td>
+        </tr>
+    }
+</tbody>
+</table>
+
+<!--分页开始-->
+<div class="layui-box layui-laypage layui-laypage-default"style="padding:1px 0; float:none;margin-top:0px;position:absolute; right:0px;"> 
+      @Html.Raw(Html.Pager(Model.Pi.PageSize, Model.Pi.PageIndex, Model.Pi.ItemCount, new { }, true, "Common.LoadTale"))
+</div>
+<!--分页结束-->
